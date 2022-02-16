@@ -5,4 +5,5 @@ const renderer = new THREE.WebGLRenderer()
 console.log(camera)
 console.log(renderer)
 // to use the renderer
+renderer.setSize(innerWidth,innerHeight) // set the size of the renderer
 document.body.appendChild(renderer.domElement)
