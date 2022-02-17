@@ -52,7 +52,7 @@ new OrbitControls(camera,renderer.domElement)
 camera.position.z = 5
 // create a plane geometry
 const planeGeometry  = new THREE.PlaneGeometry(5,5,10,10)
-const planeMaterial = new THREE.MeshPhongMaterial({color:  0xff0000, side: THREE.DoubleSide, flatShading : THREE.FlatShading,vertexColors : true }) // plane mesh material
+const planeMaterial = new THREE.MeshPhongMaterial({side: THREE.DoubleSide, flatShading : THREE.FlatShading,vertexColors : true }) // plane mesh material
 const planeMesh = new THREE.Mesh(planeGeometry,planeMaterial) // plane mesh
 scene.add(planeMesh)
 const {array} = planeMesh.geometry.attributes.position;
@@ -78,7 +78,7 @@ light.position.set(0,0,1)
 scene.add(light)
 // back light
 const backlight = new THREE.DirectionalLight(0xffffff,1)
-light.position.set(0,0,-1)
+backlight.position.set(0,0,-1)
 scene.add(backlight)
 console.log(planeMesh)
 // mouse
@@ -93,7 +93,11 @@ function animate(){
     raycaster.setFromCamera(mouse,camera)
     const intersects  = raycaster.intersectObject(planeMesh)
     if (intersects.length > 0){
-        console.log('intersected')
+       console.log(intersects[0].object.geometry.attributes.color) 
+       intersects[0].object.geometry.attributes.color.setX(intersects[0].face.a,0)
+    //    intersects[0].object.geometry.attributes.color.setX(0,0)
+       intersects[0].object.geometry.attributes.color.needsUpdate = true
+      
     } 
     // BoxMesh.rotation.x += 0.01
     // BoxMesh.rotation.y += 0.01
