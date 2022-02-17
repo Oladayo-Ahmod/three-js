@@ -6,17 +6,24 @@ const renderer = new THREE.WebGLRenderer()
 renderer.setSize(innerWidth,innerHeight) // set the size of the renderer
 renderer.setPixelRatio(devicePixelRatio)
 document.body.appendChild(renderer.domElement)
-// create a plane
+// create a box geometry
 const Boxgeometry = new THREE.BoxGeometry(1,1,1) // box geometry
-const material = new THREE.MeshBasicMaterial({color:  0xffffff}) // mesh material
-const mesh = new THREE.Mesh(Boxgeometry,material) // mesh
-scene.add(mesh)
+const Boxmaterial = new THREE.MeshBasicMaterial({color:  0xffffff}) // box mesh material
+const BoxMesh = new THREE.Mesh(Boxgeometry,Boxmaterial) // box mesh
+scene.add(BoxMesh)
 camera.position.z = 5
+// create a plane geometry
+const planeGeometry  = new THREE.PlaneGeometry(5,5,10,10)
+const planeMaterial = new THREE.MeshBasicMaterial({color:  0x00ff00, side: THREE.DoubleSide}) // plane mesh material
+const planeMesh = new THREE.Mesh(planeGeometry,planeMaterial) // plane mesh
+scene.add(planeMesh)
 // create animate function
 function animate(){
     requestAnimationFrame(animate)
     renderer.render(scene,camera) // render 
-    mesh.rotation.x += 0.01
-    mesh.rotation.y += 0.01
+    BoxMesh.rotation.x += 0.01
+    BoxMesh.rotation.y += 0.01
+    planeMesh.rotation.x += 0.01
+    planeMesh.rotation.y += 0.01
 }
 animate()
