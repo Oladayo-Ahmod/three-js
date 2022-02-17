@@ -8,34 +8,23 @@ const world  = {
         height : 10
     }
 }
+function generatePlane(){
+    planeMesh.geometry.dispose()
+    planeMesh.geometry = new THREE.PlaneGeometry(world.plane.width,world.plane.height,10,10)
+
+    const {array} = planeMesh.geometry.attributes.position;
+    for (let i = 0; i < array.length; i += 3) {
+        const x = array[i];
+        const y = array[i + 1];
+        const z = array[i + 2];
+        array[i +2] = z + Math.random()
+        
+    }
+}
 // width gui
-gui.add(world.plane,'width',1,20).onChange(()=>{
-    planeMesh.geometry.dispose()
-    planeMesh.geometry = new THREE.PlaneGeometry(world.plane.width,world.plane.height,10,10)
-
-    const {array} = planeMesh.geometry.attributes.position;
-    for (let i = 0; i < array.length; i += 3) {
-        const x = array[i];
-        const y = array[i + 1];
-        const z = array[i + 2];
-        array[i +2] = z + Math.random()
-        
-    }
-})
+gui.add(world.plane,'width',1,20).onChange((generatePlane))
 // height gui
-gui.add(world.plane,'height',1,20).onChange(()=>{
-    planeMesh.geometry.dispose()
-    planeMesh.geometry = new THREE.PlaneGeometry(world.plane.width,world.plane.height,10,10)
-
-    const {array} = planeMesh.geometry.attributes.position;
-    for (let i = 0; i < array.length; i += 3) {
-        const x = array[i];
-        const y = array[i + 1];
-        const z = array[i + 2];
-        array[i +2] = z + Math.random()
-        
-    }
-})
+gui.add(world.plane,'height',1,20).onChange((generatePlane))
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000)
 const renderer = new THREE.WebGLRenderer()
