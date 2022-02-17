@@ -23,6 +23,10 @@ function generatePlane(){
         
     }
 }
+
+// raycaster
+const raycaster = new THREE.Raycaster()
+console.log(raycaster)
 // width gui
 gui.add(world.plane,'width',1,20).onChange((generatePlane))
 // height gui
@@ -58,6 +62,7 @@ for (let i = 0; i < array.length; i += 3) {
     array[i +2] = z + Math.random()
     
 }
+
 // front light
 const light = new THREE.DirectionalLight(0xffffff,1)
 light.position.set(0,0,1)
@@ -67,13 +72,28 @@ const backlight = new THREE.DirectionalLight(0xffffff,1)
 light.position.set(0,0,-1)
 scene.add(backlight)
 console.log(planeMesh)
+// mouse
+const mouse = {
+    x : undefined,
+    y : undefined
+}
 // create animate function
 function animate(){
     requestAnimationFrame(animate)
-    renderer.render(scene,camera) // render 
+    renderer.render(scene,camera) // render
+    raycaster.setFromCamera(mouse,camera)
+    const intersects  = raycaster.intersectObject(planeMesh)
+    if (intersects.length > 0){
+        console.log('intersected')
+    } 
     // BoxMesh.rotation.x += 0.01
     // BoxMesh.rotation.y += 0.01
     // planeMesh.rotation.x += 0.01
     // planeMesh.rotation.y += 0.01
 }
 animate()
+addEventListener('mousemove',(event)=>{
+    mouse.x = (event.clientX / innerWidth) * 2 - 1
+    mouse.y = -(event.clientY / innerHeight) * 2 +1
+
+})
