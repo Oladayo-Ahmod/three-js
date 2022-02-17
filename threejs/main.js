@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import * as dat from 'dat.gui'
-import { OrbitControls } from "three-orbitcontrols"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 const  gui = new dat.GUI()
 const world  = {
     plane : {
@@ -38,6 +38,7 @@ const renderer = new THREE.WebGLRenderer()
 renderer.setSize(innerWidth,innerHeight) // set the size of the renderer
 renderer.setPixelRatio(devicePixelRatio)
 document.body.appendChild(renderer.domElement)
+new OrbitControls(camera,renderer.domElement)
 // create a box geometry
 // const Boxgeometry = new THREE.BoxGeometry(1,1,1) // box geometry
 // const Boxmaterial = new THREE.MeshBasicMaterial({color:  0xffffff}) // box mesh material
