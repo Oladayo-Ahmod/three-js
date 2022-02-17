@@ -5,12 +5,14 @@ const  gui = new dat.GUI()
 const world  = {
     plane : {
         width : 10,
-        height : 10
+        height : 10,
+        widthSegment : 10,
+        heightSegment : 10
     }
 }
 function generatePlane(){
     planeMesh.geometry.dispose()
-    planeMesh.geometry = new THREE.PlaneGeometry(world.plane.width,world.plane.height,10,10)
+    planeMesh.geometry = new THREE.PlaneGeometry(world.plane.width,world.plane.height,world.plane.widthSegment,world.plane.heightSegment)
 
     const {array} = planeMesh.geometry.attributes.position;
     for (let i = 0; i < array.length; i += 3) {
@@ -25,6 +27,10 @@ function generatePlane(){
 gui.add(world.plane,'width',1,20).onChange((generatePlane))
 // height gui
 gui.add(world.plane,'height',1,20).onChange((generatePlane))
+// widthsegment gui
+gui.add(world.plane,'widthSegment',1,20).onChange((generatePlane))
+// heightsegement gui
+gui.add(world.plane,'heightSegment',1,20).onChange((generatePlane))
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000)
 const renderer = new THREE.WebGLRenderer()
