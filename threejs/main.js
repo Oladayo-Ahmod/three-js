@@ -58,9 +58,14 @@ for (let i = 0; i < array.length; i += 3) {
     array[i +2] = z + Math.random()
     
 }
+// front light
 const light = new THREE.DirectionalLight(0xffffff,1)
 light.position.set(0,0,1)
 scene.add(light)
+// back light
+const backlight = new THREE.DirectionalLight(0xffffff,1)
+light.position.set(0,0,-1)
+scene.add(backlight)
 console.log(planeMesh)
 // create animate function
 function animate(){
