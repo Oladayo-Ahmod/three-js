@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "dat.gui": "^0.7.7",
-    "three": "^0.137.5"
+    "three": "^0.137.5",
+    "three-orbitcontrols": "^2.110.3"
   }
 }

@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import * as dat from 'dat.gui'
-
+import { OrbitControls } from "three-orbitcontrols"
 const  gui = new dat.GUI()
 const world  = {
     plane : {
@@ -28,9 +28,9 @@ gui.add(world.plane,'width',1,20).onChange((generatePlane))
 // height gui
 gui.add(world.plane,'height',1,20).onChange((generatePlane))
 // widthsegment gui
-gui.add(world.plane,'widthSegment',1,20).onChange((generatePlane))
+gui.add(world.plane,'widthSegment',1,50).onChange((generatePlane))
 // heightsegement gui
-gui.add(world.plane,'heightSegment',1,20).onChange((generatePlane))
+gui.add(world.plane,'heightSegment',1,50).onChange((generatePlane))
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000)
 const renderer = new THREE.WebGLRenderer()
