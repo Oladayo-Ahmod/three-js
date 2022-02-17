@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import * as dat from 'dat.gui'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import { color } from 'dat.gui'
 const  gui = new dat.GUI()
 const world  = {
     plane : {
@@ -51,7 +52,7 @@ new OrbitControls(camera,renderer.domElement)
 camera.position.z = 5
 // create a plane geometry
 const planeGeometry  = new THREE.PlaneGeometry(5,5,10,10)
-const planeMaterial = new THREE.MeshPhongMaterial({color:  0xff0000, side: THREE.DoubleSide, flatShading : THREE.FlatShading }) // plane mesh material
+const planeMaterial = new THREE.MeshPhongMaterial({color:  0xff0000, side: THREE.DoubleSide, flatShading : THREE.FlatShading,vertexColors : true }) // plane mesh material
 const planeMesh = new THREE.Mesh(planeGeometry,planeMaterial) // plane mesh
 scene.add(planeMesh)
 const {array} = planeMesh.geometry.attributes.position;
@@ -62,7 +63,15 @@ for (let i = 0; i < array.length; i += 3) {
     array[i +2] = z + Math.random()
     
 }
-
+const colors = []
+for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
+    colors.push(0,0,1)
+    // console.log(element)
+    
+}
+console.log(colors)
+planeMesh.geometry.setAttribute('color',new THREE.BufferAttribute(new Float32Array(colors),3))
+console.log(planeMesh.geometry.attributes)
 // front light
 const light = new THREE.DirectionalLight(0xffffff,1)
 light.position.set(0,0,1)
