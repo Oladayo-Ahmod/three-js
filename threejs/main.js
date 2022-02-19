@@ -6,10 +6,10 @@ import { color } from 'dat.gui'
 const  gui = new dat.GUI()
 const world  = {
     plane : {
-        width : 10,
-        height : 10,
-        widthSegment : 10,
-        heightSegment : 10
+        width : 19,
+        height : 19,
+        widthSegment : 17,
+        heightSegment : 17
     }
 }
 function generatePlane(){
@@ -24,15 +24,23 @@ function generatePlane(){
         array[i +2] = z + Math.random()
         
     }
+        // color of the material
+        const colors = []
+        for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
+            colors.push(0,0.19,0.4) // RGB color
+            // console.log(element)
+        }
+            
+        planeMesh.geometry.setAttribute('color',new THREE.BufferAttribute(new Float32Array(colors),3))
+
 }
 
 // raycaster
 const raycaster = new THREE.Raycaster()
-console.log(raycaster)
 // width gui
-gui.add(world.plane,'width',1,20).onChange((generatePlane))
+gui.add(world.plane,'width',1,30).onChange((generatePlane))
 // height gui
-gui.add(world.plane,'height',1,20).onChange((generatePlane))
+gui.add(world.plane,'height',1,30).onChange((generatePlane))
 // widthsegment gui
 gui.add(world.plane,'widthSegment',1,50).onChange((generatePlane))
 // heightsegement gui
@@ -52,7 +60,7 @@ new OrbitControls(camera,renderer.domElement)
 // scene.add(BoxMesh)
 camera.position.z = 5
 // create a plane geometry
-const planeGeometry  = new THREE.PlaneGeometry(5,5,10,10)
+const planeGeometry  = new THREE.PlaneGeometry(24,24,25,25)
 const planeMaterial = new THREE.MeshPhongMaterial({side: THREE.DoubleSide, flatShading : THREE.FlatShading,vertexColors : true }) // plane mesh material
 const planeMesh = new THREE.Mesh(planeGeometry,planeMaterial) // plane mesh
 scene.add(planeMesh)
@@ -72,7 +80,6 @@ for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
     
 }
 planeMesh.geometry.setAttribute('color',new THREE.BufferAttribute(new Float32Array(colors),3))
-console.log(planeMesh.geometry.attributes)
 // front light
 const light = new THREE.DirectionalLight(0xffffff,1)
 light.position.set(0,0,1)
@@ -81,7 +88,6 @@ scene.add(light)
 const backlight = new THREE.DirectionalLight(0xffffff,1)
 backlight.position.set(0,0,-1)
 scene.add(backlight)
-console.log(planeMesh)
 // mouse
 const mouse = {
     x : undefined,
@@ -126,10 +132,21 @@ function animate(){
         // transit the hovercolor to the initial color
         gsap.to(hoverColor,{
           r: initialColor.r,
-          g: initialColor.r,
+          g: initialColor.g,
           b: initialColor.b,
           onUpdate : ()=>{
-              console.log()
+               //    vertice  1
+            color.setX(intersects[0].face.a,hoverColor.r)
+            color.setY(intersects[0].face.a,hoverColor.g)
+            color.setZ(intersects[0].face.a,hoverColor.b)
+                //    vertice 2
+            color.setX(intersects[0].face.b,hoverColor.r)
+            color.setY(intersects[0].face.b,hoverColor.g)
+            color.setZ(intersects[0].face.b,hoverColor.b)
+                //    vertice 3
+            color.setX(intersects[0].face.c,hoverColor.r)
+            color.setY(intersects[0].face.c,hoverColor.g)
+            color.setZ(intersects[0].face.c,hoverColor.b)
           }
         })
     } 
