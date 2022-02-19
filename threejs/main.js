@@ -109,7 +109,26 @@ function animate(){
        color.setZ(intersects[0].face.c,1)
     //    intersects[0].object.geometry.attributes.color.setX(0,0)
        intersects[0].object.geometry.attributes.color.needsUpdate = true
-      
+        
+    //    implementing gsap for the hover effect
+        // initial color of the plane
+        const initialColor = {
+            r:0,
+            g:0.19,
+            b : 0.4
+        }
+        // hover color of the plane
+        const hoverColor = {
+            r:0.1,
+            g:0.5,
+            b:1,
+        }
+
+        gsap.to(hoverColor,{
+          r: initialColor.r,
+          g: initialColor.r,
+          b: initialColor.b,
+        })
     } 
     // BoxMesh.rotation.x += 0.01
     // BoxMesh.rotation.y += 0.01
