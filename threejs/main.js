@@ -123,11 +123,14 @@ function animate(){
             g:0.5,
             b:1,
         }
-
+        // transit the hovercolor to the initial color
         gsap.to(hoverColor,{
           r: initialColor.r,
           g: initialColor.r,
           b: initialColor.b,
+          onUpdate : ()=>{
+              console.log()
+          }
         })
     } 
     // BoxMesh.rotation.x += 0.01
