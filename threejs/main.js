@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import * as dat from 'dat.gui'
+import gsap from 'gsap'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { color } from 'dat.gui'
 const  gui = new dat.GUI()
