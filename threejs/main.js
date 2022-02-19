@@ -93,8 +93,9 @@ function animate(){
     raycaster.setFromCamera(mouse,camera)
     const intersects  = raycaster.intersectObject(planeMesh)
     if (intersects.length > 0){
-       console.log(intersects[0].object.geometry.attributes.color) 
-       intersects[0].object.geometry.attributes.color.setX(intersects[0].face.a,0)
+       intersects[0].object.geometry.attributes.color.setX(intersects[0].face.a,1)
+       intersects[0].object.geometry.attributes.color.setX(intersects[0].face.b,1)
+       intersects[0].object.geometry.attributes.color.setX(intersects[0].face.c,1)
     //    intersects[0].object.geometry.attributes.color.setX(0,0)
        intersects[0].object.geometry.attributes.color.needsUpdate = true
       
