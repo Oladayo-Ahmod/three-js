@@ -79,12 +79,17 @@ for (let i = 0; i < array.length; i += 3) {
 planeMesh.geometry.attributes.position.originalPositions = planeMesh.geometry.attributes.position.array
 // console.log(planeMesh.geometry.attributes.position)
 // color of the material
+const randomValue = []
 const colors = []
 for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
     colors.push(0,0.19,0.4) // RGB color
     // console.log(element)
+    randomValue.push(Math.random())
     
 }
+planeMesh.geometry.attributes.position.randomValue = randomValue // push random value to the position array
+console.log(planeMesh.geometry.attributes.position)
+
 planeMesh.geometry.setAttribute('color',new THREE.BufferAttribute(new Float32Array(colors),3))
 // front light
 const light = new THREE.DirectionalLight(0xffffff,1)
