@@ -16,21 +16,32 @@ function generatePlane(){
     planeMesh.geometry.dispose()
     planeMesh.geometry = new THREE.PlaneGeometry(world.plane.width,world.plane.height,world.plane.widthSegment,world.plane.heightSegment)
 
+
+        // vertice position randomization
+    const randomValue = []
     const {array} = planeMesh.geometry.attributes.position;
-    for (let i = 0; i < array.length; i += 3) {
-        const x = array[i];
-        const y = array[i + 1];
-        const z = array[i + 2];
-        array[i +2] = z + Math.random()
+    for (let i = 0; i < array.length; i++) {
+        // check if there is no remainder for division 3
+        if(i % 3 === 0){
+            const x = array[i];
+            const y = array[i + 1];
+            const z = array[i + 2];
+            // array[i +2] = z + Math.random()
+            array[i] = x + (Math.random() - 0.5)
+            array[i + 1] = y + (Math.random() - 0.5)
+            array[i + 2] = z + (Math.random() - 0.5) * 3
+        }
+        randomValue.push(Math.random() * Math.PI * 2 )
         
     }
+        planeMesh.geometry.attributes.position.randomValue = randomValue // push random value to the position array
+        planeMesh.geometry.attributes.position.originalPositions = planeMesh.geometry.attributes.position.array
         // color of the material
         const colors = []
         for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
             colors.push(0,0.19,0.4) // RGB color
             // console.log(element)
         }
-            
         planeMesh.geometry.setAttribute('color',new THREE.BufferAttribute(new Float32Array(colors),3))
 
 }
@@ -64,38 +75,9 @@ const planeGeometry  = new THREE.PlaneGeometry(world.plane.width,world.plane.hei
 const planeMaterial = new THREE.MeshPhongMaterial({side: THREE.DoubleSide, flatShading : THREE.FlatShading,vertexColors : true }) // plane mesh material
 const planeMesh = new THREE.Mesh(planeGeometry,planeMaterial) // plane mesh
 scene.add(planeMesh)
-// vertice position randomization
-const randomValue = []
-const {array} = planeMesh.geometry.attributes.position;
-for (let i = 0; i < array.length; i++) {
-    // check if there is no remainder for division 3
-    if(i % 3 === 0){
-        const x = array[i];
-        const y = array[i + 1];
-        const z = array[i + 2];
-        // array[i +2] = z + Math.random()
-        array[i] = x + (Math.random() - 0.5)
-        array[i + 1] = y + (Math.random() - 0.5)
-        array[i + 2] = z + (Math.random() - 0.5) * 3
-    }
-    randomValue.push(Math.random() - 0.5)
-    
-}
-planeMesh.geometry.attributes.position.randomValue = randomValue // push random value to the position array
-console.log(planeMesh.geometry.attributes.position)
-planeMesh.geometry.attributes.position.originalPositions = planeMesh.geometry.attributes.position.array
+
 // console.log(planeMesh.geometry.attributes.position)
-// color of the material
-const colors = []
-for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
-    colors.push(0,0.19,0.4) // RGB color
-    // console.log(element)
-   
-    
-}
-
-
-planeMesh.geometry.setAttribute('color',new THREE.BufferAttribute(new Float32Array(colors),3))
+generatePlane()
 // front light
 const light = new THREE.DirectionalLight(0xffffff,1)
 light.position.set(0,-1,1)
@@ -121,9 +103,9 @@ function animate(){
     // console.log(originalAttribute)
     for (let i = 0; i < array.length; i += 3 ) {
         // x axis
-         array[i] = originalPositions[i] + Math.cos(frame + randomValue[i]) * 0.003
+         array[i] = originalPositions[i] + Math.cos(frame + randomValue[i]) * 0.01
         // y axis
-          array[i +1] = originalPositions[i + 1] + Math.sin(frame + randomValue[i]) * 0.003
+          array[i +1] = originalPositions[i + 1] + Math.sin(frame + randomValue[i]) * 0.01
         //  console.log(originalPositions[i])
         
     }
