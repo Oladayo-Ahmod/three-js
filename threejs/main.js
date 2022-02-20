@@ -6,10 +6,10 @@ import { color } from 'dat.gui'
 const  gui = new dat.GUI()
 const world  = {
     plane : {
-        width : 19,
-        height : 19,
-        widthSegment : 17,
-        heightSegment : 17
+        width : 400,
+        height : 400,
+        widthSegment : 50,
+        heightSegment : 50
     }
 }
 function generatePlane(){
@@ -38,9 +38,9 @@ function generatePlane(){
 // raycaster
 const raycaster = new THREE.Raycaster()
 // width gui
-gui.add(world.plane,'width',1,30).onChange((generatePlane))
+gui.add(world.plane,'width',1,400).onChange((generatePlane))
 // height gui
-gui.add(world.plane,'height',1,30).onChange((generatePlane))
+gui.add(world.plane,'height',1,400).onChange((generatePlane))
 // widthsegment gui
 gui.add(world.plane,'widthSegment',1,50).onChange((generatePlane))
 // heightsegement gui
@@ -58,9 +58,9 @@ new OrbitControls(camera,renderer.domElement)
 // const Boxmaterial = new THREE.MeshBasicMaterial({color:  0xffffff}) // box mesh material
 // const BoxMesh = new THREE.Mesh(Boxgeometry,Boxmaterial) // box mesh
 // scene.add(BoxMesh)
-camera.position.z = 5
+camera.position.z = 50
 // create a plane geometry
-const planeGeometry  = new THREE.PlaneGeometry(24,24,25,25)
+const planeGeometry  = new THREE.PlaneGeometry(world.plane.width,world.plane.height,world.plane.widthSegment,world.plane.heightSegment)
 const planeMaterial = new THREE.MeshPhongMaterial({side: THREE.DoubleSide, flatShading : THREE.FlatShading,vertexColors : true }) // plane mesh material
 const planeMesh = new THREE.Mesh(planeGeometry,planeMaterial) // plane mesh
 scene.add(planeMesh)
@@ -76,9 +76,9 @@ for (let i = 0; i < array.length; i++) {
         // array[i +2] = z + Math.random()
         array[i] = x + (Math.random() - 0.5)
         array[i + 1] = y + (Math.random() - 0.5)
-        array[i + 2] = z + Math.random()
+        array[i + 2] = z + (Math.random() - 0.5) * 3
     }
-    randomValue.push(Math.random())
+    randomValue.push(Math.random() - 0.5)
     
 }
 planeMesh.geometry.attributes.position.randomValue = randomValue // push random value to the position array
