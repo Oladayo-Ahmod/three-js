@@ -98,7 +98,7 @@ for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
 planeMesh.geometry.setAttribute('color',new THREE.BufferAttribute(new Float32Array(colors),3))
 // front light
 const light = new THREE.DirectionalLight(0xffffff,1)
-light.position.set(0,0,1)
+light.position.set(0,-1,1)
 scene.add(light)
 // back light
 const backlight = new THREE.DirectionalLight(0xffffff,1)
