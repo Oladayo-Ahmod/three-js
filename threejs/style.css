@@ -23,3 +23,14 @@ body{
   color: #4f5d6a;
   cursor: pointer;
 }
+.container .btn-hover{
+  transition: 0.5s ease-in-out;
+
+}
+.container .btn-hover:hover{
+  transition: 0.5s ease-in-out;
+  box-shadow: none  !important;
+  background: transparent !important;
+  border: 1px solid white;
+  color: white;
+}
