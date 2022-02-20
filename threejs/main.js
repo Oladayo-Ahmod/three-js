@@ -65,30 +65,35 @@ const planeMaterial = new THREE.MeshPhongMaterial({side: THREE.DoubleSide, flatS
 const planeMesh = new THREE.Mesh(planeGeometry,planeMaterial) // plane mesh
 scene.add(planeMesh)
 // vertice position randomization
-const {array} = planeMesh.geometry.attributes.position;
-for (let i = 0; i < array.length; i += 3) {
-    const x = array[i];
-    const y = array[i + 1];
-    const z = array[i + 2];
-    // array[i +2] = z + Math.random()
-    array[i] = x + (Math.random() - 0.5)
-    array[i + 1] = y + (Math.random() - 0.5)
-    array[i + 2] = z + Math.random()
-    
-}
-planeMesh.geometry.attributes.position.originalPositions = planeMesh.geometry.attributes.position.array
-// console.log(planeMesh.geometry.attributes.position)
-// color of the material
 const randomValue = []
-const colors = []
-for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
-    colors.push(0,0.19,0.4) // RGB color
-    // console.log(element)
+const {array} = planeMesh.geometry.attributes.position;
+for (let i = 0; i < array.length; i++) {
+    // check if there is no remainder for division 3
+    if(i % 3 === 0){
+        const x = array[i];
+        const y = array[i + 1];
+        const z = array[i + 2];
+        // array[i +2] = z + Math.random()
+        array[i] = x + (Math.random() - 0.5)
+        array[i + 1] = y + (Math.random() - 0.5)
+        array[i + 2] = z + Math.random()
+    }
     randomValue.push(Math.random())
     
 }
 planeMesh.geometry.attributes.position.randomValue = randomValue // push random value to the position array
 console.log(planeMesh.geometry.attributes.position)
+planeMesh.geometry.attributes.position.originalPositions = planeMesh.geometry.attributes.position.array
+// console.log(planeMesh.geometry.attributes.position)
+// color of the material
+const colors = []
+for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
+    colors.push(0,0.19,0.4) // RGB color
+    // console.log(element)
+   
+    
+}
+
 
 planeMesh.geometry.setAttribute('color',new THREE.BufferAttribute(new Float32Array(colors),3))
 // front light
@@ -112,10 +117,13 @@ function animate(){
     raycaster.setFromCamera(mouse,camera)
     // console.log(planeMesh.geometry.attributes.position.array)
     frame += 0.01;
-    const {array , originalPositions} = planeMesh.geometry.attributes.position
+    const {array , originalPositions, randomValue} = planeMesh.geometry.attributes.position
     // console.log(originalAttribute)
     for (let i = 0; i < array.length; i += 3 ) {
-         array[i] = originalPositions[i] + Math.cos(frame) * 0.01
+        // x axis
+         array[i] = originalPositions[i] + Math.cos(frame + randomValue[i]) * 0.003
+        // y axis
+          array[i +1] = originalPositions[i + 1] + Math.sin(frame + randomValue[i]) * 0.003
         //  console.log(originalPositions[i])
         
     }
