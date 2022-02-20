@@ -64,14 +64,20 @@ const planeGeometry  = new THREE.PlaneGeometry(24,24,25,25)
 const planeMaterial = new THREE.MeshPhongMaterial({side: THREE.DoubleSide, flatShading : THREE.FlatShading,vertexColors : true }) // plane mesh material
 const planeMesh = new THREE.Mesh(planeGeometry,planeMaterial) // plane mesh
 scene.add(planeMesh)
+// vertice position randomization
 const {array} = planeMesh.geometry.attributes.position;
 for (let i = 0; i < array.length; i += 3) {
     const x = array[i];
     const y = array[i + 1];
     const z = array[i + 2];
-    array[i +2] = z + Math.random()
+    // array[i +2] = z + Math.random()
+    array[i] = x + (Math.random() - 0.5)
+    array[i + 1] = y + (Math.random() - 0.5)
+    array[i + 2] = z + Math.random()
     
 }
+planeMesh.geometry.attributes.position.originalPositions = planeMesh.geometry.attributes.position.array
+// console.log(planeMesh.geometry.attributes.position)
 // color of the material
 const colors = []
 for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
@@ -94,10 +100,21 @@ const mouse = {
     y : undefined
 }
 // create animate function
+let frame = 0
 function animate(){
     requestAnimationFrame(animate)
     renderer.render(scene,camera) // render
     raycaster.setFromCamera(mouse,camera)
+    // console.log(planeMesh.geometry.attributes.position.array)
+    frame += 0.01;
+    const {array , originalPositions} = planeMesh.geometry.attributes.position
+    // console.log(originalAttribute)
+    for (let i = 0; i < array.length; i += 3 ) {
+         array[i] = originalPositions[i] + Math.cos(frame) * 0.01
+        //  console.log(originalPositions[i])
+        
+    }
+    planeMesh.geometry.attributes.position.needsUpdate = true
     const intersects  = raycaster.intersectObject(planeMesh)
     if (intersects.length > 0){
        const {color} = intersects[0].object.geometry.attributes
