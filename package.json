@@ -3,6 +3,7 @@
     "dat.gui": "^0.7.7",
     "gsap": "^3.9.1",
     "three": "^0.137.5",
-    "three-orbitcontrols": "^2.110.3"
+    "three-orbitcontrols": "^2.110.3",
+    "typed.js": "^2.0.12"
   }
 }

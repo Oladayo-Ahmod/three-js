@@ -34,3 +34,12 @@ body{
   border: 1px solid white;
   color: white;
 }
+.skills{
+  font-size: 25px;
+  font-weight: bold;
+  color: #7891a7;
+}
+.dev-name{
+  font-size: 30px;
+  font-weight: bolder;
+}

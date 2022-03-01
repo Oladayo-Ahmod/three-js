@@ -86,7 +86,7 @@ scene.add(light)
 const backlight = new THREE.DirectionalLight(0xffffff,1)
 backlight.position.set(0,0,-1)
 scene.add(backlight)
-// mouse
+// mouse 
 const mouse = {
     x : undefined,
     y : undefined
