@@ -62,7 +62,7 @@ const renderer = new THREE.WebGLRenderer()
 // to use the renderer
 renderer.setSize(innerWidth,innerHeight) // set the size of the renderer
 renderer.setPixelRatio(devicePixelRatio)
-document.body.appendChild(renderer.domElement)
+document.body.prepend(renderer.domElement)
 new OrbitControls(camera,renderer.domElement)
 // create a box geometry
 // const Boxgeometry = new THREE.BoxGeometry(1,1,1) // box geometry

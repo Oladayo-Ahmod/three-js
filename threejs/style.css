@@ -50,3 +50,7 @@ font-family: 'Shizuru', cursive;
   font-family: 'Roboto Condensed', sans-serif;
 font-family: 'Shizuru', cursive;
 }
+/* portfolio */
+.portfolio{
+  position: relative;
+}
