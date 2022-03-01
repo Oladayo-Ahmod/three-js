@@ -53,4 +53,5 @@ font-family: 'Shizuru', cursive;
 /* portfolio */
 .portfolio{
   position: relative;
+  top: 100px;
 }
