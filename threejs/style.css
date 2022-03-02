@@ -54,12 +54,20 @@ font-family: 'Shizuru', cursive;
   margin:0 !important;
   top: 370px;
 }
+.hover{
+  overflow: hidden;
+}
 .about-img{
   height: 280px;
     object-fit: cover;
     background-size: cover;
+  transition: 1s ease;
     background-repeat: no-repeat;
     background-image: url(/images/dev.png);
+}
+.about-img:hover{
+  transition: 1s ease;
+  transform: scale(1.2);
 }
 .about h2{
   font-weight: bolder;
