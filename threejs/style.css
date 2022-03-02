@@ -68,7 +68,7 @@ font-family: 'Shizuru', cursive;
   justify-content: space-evenly;
 }
 .font-container .rounded-circle{
-  padding: 10px 5px 5px 15px;
+  padding: 12px 5px 5px 15px;
   width: 60px  !important;
   height: 60px !important;
 }
