@@ -12,12 +12,10 @@ body{
   left: 50%;
   top: 50%;
 }
-.container h1{
-  color: #cbdff1;
+.container .dev-name{
+  color: #cbdff1 !important;
 }
-.container h2{
-  color: #cbdff1;
-}
+
 .container h2 a{
   text-decoration: none;
   color: #4f5d6a;
