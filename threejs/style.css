@@ -52,7 +52,7 @@ font-family: 'Shizuru', cursive;
 .about{
   position: relative;
   margin:0 !important;
-  top: 230px;
+  top: 310px;
 }
 .about-img{
   height: 280px;
@@ -60,6 +60,15 @@ font-family: 'Shizuru', cursive;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(/images/dev.png);
+}
+.about h2{
+  font-weight: bolder;
+  color: #2691ef;
+  
+  font-family: 'Shizuru', cursive;
+}
+.prof-b{
+  font-weight: lighter;
 }
 .font-container{
   display: flex;
@@ -87,7 +96,8 @@ font-family: 'Shizuru', cursive;
   top: 100px;
 }
 .portfolio .row{
-  background: #3d3df5;
+  /* background: #3d3df5; */
+  /* background: #2691ef; */
   width: 100%;
     border-radius: 110px 0 60px 0px !important;
   /* border-radius: 13px;
