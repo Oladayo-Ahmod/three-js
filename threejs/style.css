@@ -52,6 +52,19 @@ font-family: 'Shizuru', cursive;
 }
 /* portfolio */
 .portfolio{
+  width: 100%;
   position: relative;
+  margin:0 !important;
   top: 100px;
 }
+.portfolio .row{
+  background: #3d3df5;
+    border-radius: 110px 0 60px 0px !important;
+  /* border-radius: 13px;
+  background: #ededed;
+  box-shadow:  8px 8px 16px #d1d1d1,
+               -8px -8px 16px #ffffff; */
+}
+/* canvas{
+  max-width: 100% !important;
+} */
