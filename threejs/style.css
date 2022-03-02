@@ -63,6 +63,23 @@ font-family: 'Shizuru', cursive;
     background-repeat: no-repeat;
     background-image: url(/images/dev.png);
 }
+.font-container{
+  display: flex;
+  justify-content: space-evenly;
+}
+.font-container .rounded-circle{
+  padding: 10px 5px 5px 15px;
+  width: 60px  !important;
+  height: 60px !important;
+}
+.font-container span i{
+  font-size: 40px;
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow:  20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff;
+ 
+}
 /* portfolio */
 .portfolio{
   width: 100%;
