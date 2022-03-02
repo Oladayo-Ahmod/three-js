@@ -52,7 +52,7 @@ font-family: 'Shizuru', cursive;
 .about{
   position: relative;
   margin:0 !important;
-  top: 310px;
+  top: 370px;
 }
 .about-img{
   height: 280px;
@@ -107,4 +107,5 @@ font-family: 'Shizuru', cursive;
 }
 canvas{
   max-width: 100% !important;
+  height: 100vh !important;
 }
