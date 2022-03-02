@@ -69,6 +69,12 @@ font-family: 'Shizuru', cursive;
 }
 .prof-b{
   font-weight: lighter;
+  font-family: auto;
+    font-family: emoji;
+}
+.prof-b:nth-child(4){
+  letter-spacing: 2px;
+    word-spacing: 3px;
 }
 .font-container{
   display: flex;
