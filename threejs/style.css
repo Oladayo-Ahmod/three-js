@@ -69,6 +69,7 @@ font-family: 'Shizuru', cursive;
   text-decoration: none;
 }
 .project-img{
+  object-fit: cover;
   transition: 1s ease;
 }
 .about-img:hover,.project-img:hover{
