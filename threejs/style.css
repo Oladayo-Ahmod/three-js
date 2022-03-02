@@ -67,14 +67,15 @@ font-family: 'Shizuru', cursive;
   
   font-family: 'Shizuru', cursive;
 }
-.prof-b{
+.prof-b,.prof-intro{
   font-weight: lighter;
   font-family: auto;
     font-family: emoji;
 }
-.prof-b:nth-child(4){
+.prof-intro{
   letter-spacing: 2px;
     word-spacing: 3px;
+    font-size: larger;
 }
 .font-container{
   display: flex;
