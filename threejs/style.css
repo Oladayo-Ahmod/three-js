@@ -50,6 +50,19 @@ font-family: 'Shizuru', cursive;
   font-family: 'Roboto Condensed', sans-serif;
 font-family: 'Shizuru', cursive;
 }
+/* about section */
+.about{
+  position: relative;
+  margin:0 !important;
+  top: 180px;
+}
+.about-img{
+  height: 280px;
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(/images/dev.png);
+}
 /* portfolio */
 .portfolio{
   width: 100%;
@@ -59,12 +72,13 @@ font-family: 'Shizuru', cursive;
 }
 .portfolio .row{
   background: #3d3df5;
+  width: 100%;
     border-radius: 110px 0 60px 0px !important;
   /* border-radius: 13px;
   background: #ededed;
   box-shadow:  8px 8px 16px #d1d1d1,
                -8px -8px 16px #ffffff; */
 }
-/* canvas{
+canvas{
   max-width: 100% !important;
-} */
+}
