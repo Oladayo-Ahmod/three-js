@@ -65,7 +65,13 @@ font-family: 'Shizuru', cursive;
     background-repeat: no-repeat;
     background-image: url(/images/dev.png);
 }
-.about-img:hover{
+.project a{
+  text-decoration: none;
+}
+.project-img{
+  transition: 1s ease;
+}
+.about-img:hover,.project-img:hover{
   transition: 1s ease;
   transform: scale(1.2);
 }
