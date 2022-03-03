@@ -149,8 +149,15 @@ font-family: 'Shizuru', cursive;
 .footer h3,.footer h4,.footer p{
   font-family: auto;
 }
+
 /* footer ends */
 canvas{
   max-width: 100% !important;
   height: 100vh !important;
+}
+/* responsive */
+@media screen and (max-width : 759px){
+  .footer .row{
+    padding-top: 30px;
+  }
 }
