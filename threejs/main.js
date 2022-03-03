@@ -69,7 +69,7 @@ new OrbitControls(camera,renderer.domElement)
 // const Boxmaterial = new THREE.MeshBasicMaterial({color:  0xffffff}) // box mesh material
 // const BoxMesh = new THREE.Mesh(Boxgeometry,Boxmaterial) // box mesh
 // scene.add(BoxMesh)
-camera.position.z = 50
+camera.position.z = 20
 // create a plane geometry
 const planeGeometry  = new THREE.PlaneGeometry(world.plane.width,world.plane.height,world.plane.widthSegment,world.plane.heightSegment)
 const planeMaterial = new THREE.MeshPhongMaterial({side: THREE.DoubleSide, flatShading : THREE.FlatShading,vertexColors : true }) // plane mesh material
