@@ -158,6 +158,6 @@ canvas{
 /* responsive */
 @media screen and (max-width : 759px){
   .footer .row{
-    padding-top: 30px;
+    padding-top: 55px !important;
   }
 }
