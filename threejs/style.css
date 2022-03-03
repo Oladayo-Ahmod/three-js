@@ -52,7 +52,7 @@ font-family: 'Shizuru', cursive;
 .about{
   position: relative;
   margin:0 !important;
-  top: 370px;
+  top: 1020px;
 }
 .hover{
   overflow: hidden;
@@ -67,6 +67,10 @@ font-family: 'Shizuru', cursive;
 }
 .project a{
   text-decoration: none;
+}
+.project p{
+  font-family: auto;
+  font-size: 16px;
 }
 .project-img{
   object-fit: cover;
@@ -111,17 +115,17 @@ font-family: 'Shizuru', cursive;
  
 }
 /* portfolio */
-.portfolio{
+/* .portfolio{
   width: 100%;
   position: relative;
   margin:0 !important;
   top: 100px;
-}
+} */
 .portfolio .row{
   /* background: #3d3df5; */
   /* background: #2691ef; */
-  width: 100%;
-    border-radius: 110px 0 60px 0px !important;
+  /* width: 100%; */
+    /* border-radius: 110px 0 60px 0px !important; */
   /* border-radius: 13px;
   background: #ededed;
   box-shadow:  8px 8px 16px #d1d1d1,
