@@ -131,6 +131,25 @@ font-family: 'Shizuru', cursive;
   box-shadow:  8px 8px 16px #d1d1d1,
                -8px -8px 16px #ffffff; */
 }
+.hover{
+  overflow: hidden;
+}
+.footer-img{
+  height: 300px;
+    object-fit: cover;
+    background-size: cover;
+  transition: 1s ease;
+    background-repeat: no-repeat;
+    background-image: url(/images/dev.png);
+}
+.footer-img:hover{
+  transition: 1s ease;
+  transform: scale(1.2);
+}
+.footer h3,.footer h4,.footer p{
+  font-family: auto;
+}
+/* footer ends */
 canvas{
   max-width: 100% !important;
   height: 100vh !important;
