@@ -152,7 +152,7 @@ font-family: 'Shizuru', cursive;
 
 /* footer ends */
 canvas{
-  max-width: 100% !important;
+  width: 100% !important;
   height: 100vh !important;
 }
 /* responsive */

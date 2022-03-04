@@ -5,3 +5,6 @@ var typed = new Typed('.skills', {
     loop: true,
     shuffle: true
   });
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
