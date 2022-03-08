@@ -1,4 +1,3 @@
-import Typed from ''
 var typed = new Typed('.skills', {
     strings: ["Front-end Developer.", "Back-end Developer.","Full Stack Developer."],
     typeSpeed: 40,
